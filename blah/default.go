@@ -74,8 +74,7 @@ func FindPersonByName(w http.ResponseWriter, r *http.Request) {
 		uriSegments := strings.Split(r.URL.Path,"/")
 		n := uriSegments[2]
 		log.Println("FindPersonByName:", n)
-		var ret = [1]Default{}
-		ret[0] = Default{n, m[n]}
+		ret := Default{n, m[n]}
 	        js, err := json.Marshal(ret)
 		if err != nil {
 		    http.Error(w, err.Error(), http.StatusInternalServerError)
